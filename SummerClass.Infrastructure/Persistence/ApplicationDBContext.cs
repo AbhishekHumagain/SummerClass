@@ -19,7 +19,9 @@ namespace SummerClass.Infrastructure.Persistence
             _dateTime = dateTime;
         }
 
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<SalaryOrBonus> SalaryOrBonus { get; set; }
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<BaseEntity> entry in ChangeTracker.Entries<BaseEntity>())

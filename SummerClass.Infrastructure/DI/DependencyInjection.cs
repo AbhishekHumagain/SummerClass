@@ -17,7 +17,7 @@ namespace SummerClass.Infrastructure.DI
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDBContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("SummerClassDatabase"),
+                options.UseNpgsql(configuration.GetConnectionString("SummerClassDatabasePostgreSQL"),
                 b => b.MigrationsAssembly(typeof(ApplicationDBContext).Assembly.FullName)), ServiceLifetime.Transient);
 
             services.AddScoped<IApplicationDBContext>(provider => provider.GetService<ApplicationDBContext>());

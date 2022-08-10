@@ -24,14 +24,14 @@ namespace SummerClass.Infrastructure.Services
                 JoinDate = employee.JoinDate,
                 Designation = employee.Designation
             };
-            await _dbContext.Employees.AddAsync(employeeDetails);
+            await _dbContext.Employee.AddAsync(employeeDetails);
             await _dbContext.SaveChangesAsync(default(CancellationToken));
             return employeeDetails;
         }
 
         public async Task<List<Employee>> GetAllUserAsync()
         {
-            var data = _dbContext.Employees.Select(e => new Employee() 
+            var data = _dbContext.Employee.Select(e => new Employee() 
             {
                  Id = e.Id,
                  Designation = e.Designation,
